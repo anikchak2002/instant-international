@@ -1,5 +1,7 @@
 const arrow = '<span aria-hidden="true">↗</span>';
-const isCatalogue = location.pathname.endsWith('catalogue.html');
+// Hosts may serve catalogue.html at /catalogue. Detect the rendered page,
+// rather than relying on a filename that the host can rewrite.
+const isCatalogue = Boolean(document.querySelector('#product-grid'));
 const home = isCatalogue ? 'index.html' : '';
 document.querySelector('#site-header').innerHTML = `
   <div class="utility-bar"><div class="container"><span>We are committed to you.</span><div><a href="mailto:sales@instant-international.com">sales@instant-international.com</a><span class="utility-divider"></span><a href="tel:+919222105421">+91 92221 05421</a></div></div></div>
