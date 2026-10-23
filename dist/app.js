@@ -9,3 +9,12 @@ const menu = document.querySelector('.menu-toggle');
 menu.addEventListener('click', () => { const open = menu.getAttribute('aria-expanded') !== 'true'; menu.setAttribute('aria-expanded', String(open)); menu.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation'); document.querySelector('.main-nav').classList.toggle('is-open', open); });
 document.querySelectorAll('.main-nav a').forEach(a => a.addEventListener('click', () => { menu.setAttribute('aria-expanded', 'false'); menu.setAttribute('aria-label', 'Open navigation'); document.querySelector('.main-nav').classList.remove('is-open'); }));
 document.addEventListener('keydown', e => { if (e.key === 'Escape') { menu.setAttribute('aria-expanded', 'false'); menu.setAttribute('aria-label', 'Open navigation'); document.querySelector('.main-nav').classList.remove('is-open'); } });
+
+// Close the mobile drawer after a breakpoint change or a click outside it.
+function closeNavigation() {
+  menu.setAttribute('aria-expanded', 'false');
+  menu.setAttribute('aria-label', 'Open navigation');
+  document.querySelector('.main-nav').classList.remove('is-open');
+}
+window.matchMedia('(min-width: 761px)').addEventListener('change', event => { if (event.matches) closeNavigation(); });
+document.addEventListener('click', event => { if (!event.target.closest('.main-header')) closeNavigation(); });
