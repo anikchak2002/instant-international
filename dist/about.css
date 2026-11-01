@@ -1,0 +1,47 @@
+.about-page{background:#faf9f6}
+.about-page-hero{padding:28px 0 40px}
+.about-page .breadcrumb{margin-bottom:32px}
+.about-page-heading{display:grid;grid-template-columns:1.5fr 1fr;gap:60px;align-items:end}
+.about-page-heading h1{font-size:clamp(40px,4.4vw,62px);font-weight:450;line-height:1.1;letter-spacing:-.055em;margin:0}
+.about-page-heading h1 em{font-family:Georgia,serif;font-weight:400;color:#315d79}
+.about-page-heading>p{font-size:22px;line-height:1.6;max-width:350px;margin:0 0 8px;color:#526571}
+.about-page .eyebrow{font-size:10px;letter-spacing:.15em}
+.about-laboratory{width:100%;max-width:800px;margin:0 auto;overflow:hidden;border-radius:12px}
+.about-laboratory img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:contain}
+.about-laboratory figcaption,.about-industries figcaption{font-size:12px;line-height:1.7;color:#5e717e;padding:14px 0}
+.about-story,.about-business,.about-purpose,.about-sectors{padding:56px 0}
+.about-editorial{display:grid;grid-template-columns:1fr 1.65fr;gap:80px}
+.about-section-label>span{font-size:10px;letter-spacing:.15em;color:#617682}
+.about-section-label h2{font-size:clamp(28px,3vw,40px);font-weight:450;line-height:1.25;letter-spacing:-.035em;margin:20px 0 0}
+.about-prose p,.about-purpose-grid p{font-size:17px;line-height:1.9;color:#526571;margin:0 0 22px}
+.about-prose p:last-child,.about-purpose-grid p:last-child{margin-bottom:0}
+.about-prose>p:first-child{color:#234456;font-size:19px}
+.about-business{background:#edf1ef;border-block:1px solid #dce3df}
+.about-purpose-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;margin-top:32px}
+.about-purpose-grid article{border-top:1px solid #c6d3d9;padding-top:28px;min-width:0}
+.about-purpose-grid .eyebrow{display:none}
+.about-purpose-grid h2{font-size:38px;letter-spacing:-.04em;font-weight:450;margin-bottom:24px}
+.about-sectors{border-top:1px solid #dce3df}
+.about-industries{width:100%;max-width:960px;margin:32px auto 0}
+.about-industries img{display:block;width:100%;height:auto;border-radius:8px}
+.about-page-contact{padding:48px 0;background:#eaf0ef}
+.about-page-contact>.container{display:flex;align-items:center;justify-content:space-between;gap:32px}
+.about-page-contact h2{font-size:clamp(30px,3.6vw,46px);letter-spacing:-.04em;font-weight:450;margin:0}
+.about-page-contact .button{border-radius:999px;font-size:14px}
+@media(max-width:900px){.about-page-heading{gap:32px}.about-page-heading>p{font-size:18px}.about-editorial{gap:40px;grid-template-columns:1fr 1.6fr}.about-purpose-grid{gap:36px}}
+@media(max-width:600px){
+ .about-page-hero{padding:24px 0 36px}
+ .about-page .breadcrumb{margin-bottom:30px}
+ .about-page-heading,.about-editorial,.about-purpose-grid{grid-template-columns:1fr;gap:28px}
+ .about-page-heading h1{font-size:clamp(39px,10vw,58px)}
+ .about-page-heading>p{font-size:18px;max-width:none}
+ .about-laboratory{border-radius:10px}
+ .about-laboratory img{aspect-ratio:16/9}
+ .about-story,.about-business,.about-purpose,.about-sectors{padding:44px 0}
+ .about-section-label h2{margin-top:14px;font-size:30px}
+ .about-prose p,.about-purpose-grid p{font-size:16px;line-height:1.85}
+ .about-prose>p:first-child{font-size:18px}
+ .about-purpose-grid h2{font-size:32px}
+ .about-page-contact>.container{align-items:flex-start;flex-direction:column}
+ .about-page-contact{padding:38px 0}
+}

@@ -57,7 +57,7 @@ window.PRODUCTS = [
     "name": "Calcium Amino Acid Complex",
     "chemicalName": "Calcium amino acid chelate/complex",
     "formula": "Composition varies; no single molecular formula",
-    "cas": "Not uniquely assignable",
+    "cas": null,
     "notes": "Need the specific amino acid ligand and product specification.",
     "category": "Food",
     "id": 7
@@ -102,7 +102,7 @@ window.PRODUCTS = [
     "name": "Copper Amino Acid Complex",
     "chemicalName": "Copper amino acid chelate/complex",
     "formula": "Composition varies; no single molecular formula",
-    "cas": "Not uniquely assignable",
+    "cas": null,
     "notes": "Need the specific amino acid ligand and product specification.",
     "category": "Food",
     "id": 12
@@ -246,7 +246,7 @@ window.PRODUCTS = [
     "name": "EDTA Diammonium – Liquid",
     "chemicalName": "Diammonium EDTA aqueous solution",
     "formula": "Active ingredient formula depends on salt form; solution concentration varies",
-    "cas": "Not uniquely assignable",
+    "cas": null,
     "notes": "Confirm exact salt composition, concentration and supplier SDS. Category is indicative; actual market depends on grade, formulation and intended use.",
     "category": "Food",
     "id": 28
@@ -282,7 +282,7 @@ window.PRODUCTS = [
     "name": "EDTA Ferric Ammonium",
     "chemicalName": "Ammonium ferric EDTA",
     "formula": "Composition depends on exact ammonium/iron salt form",
-    "cas": "Not uniquely assignable",
+    "cas": null,
     "notes": "Confirm exact grade and supplier SDS. Category is indicative; actual market depends on grade, formulation and intended use.",
     "category": "Paint, coating, speciality & others",
     "id": 32
@@ -318,7 +318,7 @@ window.PRODUCTS = [
     "name": "EDTA NaFe Premix for Iron Fortification",
     "chemicalName": "Sodium ferric EDTA premix (iron-fortification premix)",
     "formula": "Premix composition varies; no single molecular formula",
-    "cas": "Not uniquely assignable",
+    "cas": null,
     "notes": "Premix is a formulation; confirm ingredient composition and iron content. Category is indicative; actual market depends on grade, formulation and intended use.",
     "category": "Food",
     "id": 36
@@ -327,7 +327,7 @@ window.PRODUCTS = [
     "name": "EDTA Tetra Ammonium",
     "chemicalName": "Tetraammonium EDTA",
     "formula": "C10H20N6O8",
-    "cas": "Not uniquely verified",
+    "cas": null,
     "notes": "Confirm CAS and exact salt composition with supplier SDS. Category is indicative; actual market depends on grade, formulation and intended use.",
     "category": "Pharma",
     "id": 37
@@ -363,7 +363,7 @@ window.PRODUCTS = [
     "name": "EDTA Zinc Ammonium",
     "chemicalName": "Ammonium zinc EDTA",
     "formula": "Formula depends on salt/hydration; commonly represented as a zinc–EDTA ammonium complex",
-    "cas": "Not uniquely assignable",
+    "cas": null,
     "notes": "Confirm exact salt composition, hydration and supplier grade. Category is indicative; actual market depends on grade, formulation and intended use.",
     "category": "Home and personal care",
     "id": 41
@@ -381,7 +381,7 @@ window.PRODUCTS = [
     "name": "Ferrous Amino Acid Complex",
     "chemicalName": "Iron(II) amino acid chelate/complex",
     "formula": "Composition varies; no single molecular formula",
-    "cas": "Not uniquely assignable",
+    "cas": null,
     "notes": "Need the specific amino acid ligand and product specification.",
     "category": "Food",
     "id": 43
@@ -453,7 +453,7 @@ window.PRODUCTS = [
     "name": "Magnesium Amino Acid Complex",
     "chemicalName": "Magnesium amino acid chelate/complex",
     "formula": "Composition varies; no single molecular formula",
-    "cas": "Not uniquely assignable",
+    "cas": null,
     "notes": "Need the specific amino acid ligand and product specification.",
     "category": "Food",
     "id": 51
@@ -471,7 +471,7 @@ window.PRODUCTS = [
     "name": "Manganese Amino Acid Complex",
     "chemicalName": "Manganese amino acid chelate/complex",
     "formula": "Composition varies; no single molecular formula",
-    "cas": "Not uniquely assignable",
+    "cas": null,
     "notes": "Need the specific amino acid ligand and product specification.",
     "category": "Food",
     "id": 53
@@ -489,7 +489,7 @@ window.PRODUCTS = [
     "name": "Metallic Salts (general)",
     "chemicalName": "Various metallic salts (unspecified)",
     "formula": "Varies by metal and anion",
-    "cas": "Not uniquely assignable",
+    "cas": null,
     "notes": "This is a broad product category, not a specific chemical. Add individual salts for exact formula and CAS.",
     "category": "Paint, coating, speciality & others",
     "id": 55
@@ -507,7 +507,7 @@ window.PRODUCTS = [
     "name": "Mix Mineral Amino Acid Complex",
     "chemicalName": "Mixed mineral amino acid complex",
     "formula": "Mixture; no single molecular formula",
-    "cas": "Not uniquely assignable",
+    "cas": null,
     "notes": "Need mineral composition and ligand specification.",
     "category": "Food",
     "id": 57
