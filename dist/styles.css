@@ -31,3 +31,43 @@
 @media(max-width:760px){.brand-logo{width:150px}.nav-wrap{height:110px}.main-nav{top:110px;font-size:17px;max-height:calc(100dvh - 140px)}html{scroll-padding-top:130px}.results-toolbar{scroll-margin-top:130px}.purpose-grid{grid-template-columns:1fr;gap:25px}.purpose-grid article{padding:25px}.hero .eyebrow{font-size:12px}.globe-kicker{font-size:10px;max-width:200px}.globe-caption{font-size:12px;max-width:190px}.globe-toggle{font-size:12px}.hero-bottom{flex-wrap:wrap}.footer-main{align-items:flex-start}.sector-ribbon span{font-size:12px}.industry-list>a{grid-template-columns:25px 1fr 40px}.industry-list h3{font-size:22px}.search-wrapper input{font-size:16px}.product-card .formula,.cas-summary>span{font-size:15px}.results-toolbar>p,.results-toolbar>label,.results-toolbar select{font-size:14px}}
 
 .portfolio .section-heading{margin-bottom:0}
+
+/* Phone layout: keep the contact strip, navigation and hero within their rows. */
+@media(max-width:760px){
+  #site-header{top:-32px}
+  .utility-bar{height:32px;font-size:12px;line-height:1.4}
+  .utility-bar .container{justify-content:flex-end}
+  .utility-bar .container>span{display:none}
+  .utility-bar a{white-space:nowrap}
+  .nav-wrap{height:104px;gap:16px;padding-block:6px}
+  .brand-logo{width:136px}
+  .brand-since{font-size:11px;line-height:1.5;margin-top:0}
+  .menu-toggle{flex:none}
+  .main-nav{top:100%;gap:3px;max-height:calc(100dvh - 136px)}
+  html{scroll-padding-top:120px}
+  .results-toolbar{scroll-margin-top:120px}
+  .hero-content{padding-top:30px;min-width:0}
+  .hero .eyebrow{font-size:11px;letter-spacing:.09em;margin-bottom:20px;max-width:340px}
+  .hero h1{font-size:clamp(44px,12vw,64px);line-height:1.06;margin-bottom:22px}
+  .hero-content>p{font-size:16px;line-height:1.7;margin-bottom:24px}
+  .hero-actions{gap:12px 20px}
+  .hero-actions .button{font-size:14px;min-height:50px;padding:14px 16px;gap:16px}
+  .hero-actions .text-link{font-size:14px;gap:12px}
+  .globe-stage{height:350px;margin:12px 0 0;display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:32px minmax(0,1fr) 48px;column-gap:12px}
+  #chemistry-globe{grid-column:1/-1;grid-row:2;width:100%;max-width:270px;justify-self:center}
+  .globe-kicker{position:static;grid-column:1/-1;grid-row:1;max-width:none;font-size:10px;text-align:center;align-self:center}
+  .globe-caption{position:static;grid-column:1;grid-row:3;max-width:none;font-size:11px;line-height:1.5}
+  .globe-toggle{position:static;grid-column:2;grid-row:3;font-size:11px;min-height:44px;align-self:center;padding:6px 8px}
+  .globe-toggle .toggle-label{font-size:11px}
+  .hero-bottom{font-size:10px;letter-spacing:.05em;gap:8px 16px}
+  .sector-ribbon .container{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .sector-ribbon span{min-width:0;font-size:11px;line-height:1.5}
+  .section{padding-block:54px}
+  .section-heading h2,.about-copy h2{font-size:clamp(30px,8vw,42px);overflow-wrap:break-word}
+  .purpose-grid article{min-width:0;padding:24px 20px}
+  .purpose-grid h2{font-size:32px}
+  .industry-list>a{grid-template-columns:24px minmax(0,1fr) 40px}
+  .industry-list h3{font-size:21px;overflow-wrap:break-word}
+  .footer-brand .brand-logo{width:200px}
+  .catalogue-heading h1{font-size:clamp(35px,9.5vw,52px)}
+}
