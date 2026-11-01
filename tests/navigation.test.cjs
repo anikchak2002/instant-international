@@ -34,7 +34,7 @@ for (const pathname of ['/catalogue', '/catalogue.html']) {
   });
 }
 
-test('homepage navigation and industry category links lead back to the catalogue', () => {
+test('homepage navigation and industry links lead back to the catalogue', () => {
   for (const pathname of ['/', '/index', '/index.html']) {
     for (const html of render('home', pathname)) {
       assert.ok(html.includes('href="#industries"'));
@@ -44,11 +44,11 @@ test('homepage navigation and industry category links lead back to the catalogue
   const homepage = fs.readFileSync(path.join(dist, 'index.html'), 'utf8');
   const industries = homepage.split('class="industry-list"')[1].split('</section>')[0];
   const links = [...industries.matchAll(/href="([^"]+)"/g)].map(match => match[1]);
-  assert.equal(links.length, 4);
+  assert.equal(links.length, 11);
   for (const href of links) {
     const url = new URL(href.replaceAll('&amp;', '&'), 'https://example.com/');
     assert.equal(url.pathname, '/catalogue.html');
-    assert.ok(url.searchParams.get('category'));
+    assert.equal(url.searchParams.has('category'), false);
     assert.ok(fs.existsSync(path.join(dist, 'catalogue.html')));
   }
 });

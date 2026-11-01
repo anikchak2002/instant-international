@@ -19,7 +19,7 @@ Open http://localhost:4173 in your browser.
 - `dist/styles.css`: responsive styles
 - `dist/app.js`: shared navigation and footer
 - `dist/globe.js`: animated globe
-- `dist/catalogue.js`: search, filters, product details and enquiries
+- `dist/catalogue.js`: search, sorting, product details and enquiries
 - `dist/products.js`: catalogue data
 - `dist/assets/`: branding and downloadable catalogue
 - `catalogue-source.json`: source product records
