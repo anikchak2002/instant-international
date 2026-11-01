@@ -11,6 +11,7 @@ function render(page, pathname) {
   const node = () => ({ innerHTML: '', addEventListener() {}, setAttribute() {}, classList: { remove() {} } });
   const document = {
     querySelector(selector) {
+      if (selector === '#contact-form') return page === 'contact' ? node() : null;
       if (selector === '#product-grid') return page === 'catalogue' ? node() : null;
       if (!elements.has(selector)) elements.set(selector, node());
       return elements.get(selector);
@@ -25,7 +26,7 @@ function render(page, pathname) {
 for (const pathname of ['/catalogue', '/catalogue.html']) {
   test(`catalogue navigation returns to homepage sections at ${pathname}`, () => {
     for (const html of render('catalogue', pathname)) {
-      for (const section of ['about', 'industries', 'contact']) {
+      for (const section of ['about', 'industries']) {
         assert.ok(html.includes(`href="index.html#${section}"`));
         assert.ok(fs.readFileSync(path.join(dist, 'index.html'), 'utf8').includes(`id="${section}"`));
       }
@@ -52,3 +53,15 @@ test('homepage navigation and industry links lead back to the catalogue', () => 
     assert.ok(fs.existsSync(path.join(dist, 'catalogue.html')));
   }
 });
+
+for (const pathname of ['/contact', '/contact.html']) {
+  test(`contact page navigation at ${pathname}`, () => {
+    const [header, footer] = render('contact', pathname);
+    assert.match(header, /href="contact.html" aria-current="page"/);
+    assert.ok(!header.includes('href="index.html" aria-current="page"'));
+    for (const html of [header, footer]) {
+      assert.ok(html.includes('href="index.html#about"'));
+      assert.ok(html.includes('href="contact.html"'));
+    }
+  });
+}
