@@ -184,3 +184,7 @@
 .home-page .about-company-button:hover{background:#123d70;border-color:#123d70}
 .home-page .hero-actions{flex-wrap:wrap;row-gap:16px}
 @media(max-width:760px){.home-page #about .about-grid{gap:28px}.home-page .about-company-button{margin-top:22px;min-height:48px;padding:12px 18px}}
+
+/* Slim decorative blue divider below the homepage hero. */
+.home-page .sector-ribbon{height:18px;padding:0;min-height:0}
+@media(max-width:760px){.home-page .sector-ribbon{height:12px}}
