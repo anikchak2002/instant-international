@@ -1,6 +1,14 @@
 (() => {
   'use strict';
   const form = document.querySelector('#contact-form');
+  const productSelect = document.querySelector('#contact-products');
+  const escape = value => String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+  const productNames = [...new Set((window.PRODUCTS || []).map(product => product.name))]
+    .sort((a, b) => a.localeCompare(b, 'en', {sensitivity: 'base'}));
+  productSelect.innerHTML = '<option value="">Select a product</option>' +
+    productNames.map(name => `<option value="${escape(name)}">${escape(name)}</option>`).join('') +
+    '<option value="Other / not listed">Other / not listed — describe in your message</option>';
+
   form.addEventListener('submit', event => {
     event.preventDefault();
     if (!form.reportValidity()) return;

@@ -123,7 +123,7 @@ test('product card omits CAS option when CAS is not available', () => {
   assert.equal(cardHtml.includes('Not uniquely assignable'), false, 'Card should not display unassignable CAS placeholder');
 });
 
-test('product card renders CAS option when CAS is available', () => {
+test('product row shows formula and available CAS below the name', () => {
   const { sandbox, elements } = setupEnvironment();
   const grid = elements.get('#product-grid');
   
@@ -132,8 +132,11 @@ test('product card renders CAS option when CAS is available', () => {
   const cards = grid.innerHTML.split('<article ').filter(c => c.includes('Aluminium Stearate'));
   assert.equal(cards.length, 1);
   const cardHtml = cards[0];
-  assert.ok(cardHtml.includes('cas-summary'), 'Card should contain cas-summary');
-  assert.ok(cardHtml.includes('637-12-7'), 'Card should display the CAS number');
+  assert.equal(cardHtml.includes('cas-summary'), false);
+  assert.ok(cardHtml.includes('View details'));
+  assert.ok(cardHtml.includes('CAS No.</span> 637-12-7'));
+  assert.ok(cardHtml.includes('Formula</span> Al(C18H35O2)3'));
+  assert.ok(cardHtml.indexOf('product-title') < cardHtml.indexOf('Formula</span>'));
 });
 
 test('product detail dialog omits CAS number row when CAS is not available', () => {
@@ -243,4 +246,68 @@ test('enquiry form includes CAS line when product has CAS', () => {
   assert.ok(submittedUrl);
   const decodedBody = decodeURIComponent(new URL(submittedUrl).searchParams.get('text'));
   assert.ok(decodedBody.includes('CAS: 637-12-7'), 'Should contain CAS: 637-12-7 in enquiry message');
+});
+
+
+test('catalogue lists every product alphabetically with one heading per initial', () => {
+  const { sandbox, elements } = setupEnvironment();
+  const html = elements.get('#product-grid').innerHTML;
+  const names = [...html.matchAll(/class="product-title">([^<]+)</g)].map(m => m[1]);
+  assert.equal(names.length, sandbox.window.PRODUCTS.length);
+  assert.deepEqual(names, [...names].sort((a,b) => a.localeCompare(b, 'en', {sensitivity:'base'})));
+  const letters = [...html.matchAll(/class="product-letter">([^<]+)</g)].map(m => m[1]);
+  assert.deepEqual(letters, [...new Set(names.map(name => name[0].toUpperCase()))]);
+  assert.equal(html.includes('product-category'), false);
+});
+
+test('search matches name prefixes, ignores case and whitespace, and handles no results', () => {
+  const { elements } = setupEnvironment();
+  const search = elements.get('#product-search');
+  for (const query of ['A', ' al', 'SOD']) {
+    search.value = query;
+    search.listeners.input();
+    const names = [...elements.get('#product-grid').innerHTML.matchAll(/class="product-title">([^<]+)</g)].map(m => m[1]);
+    assert.ok(names.length > 0);
+    assert.ok(names.every(name => name.toLowerCase().startsWith(query.trim().toLowerCase())));
+  }
+  search.value = 'zzzzzz'; search.listeners.input();
+  assert.match(elements.get('#product-grid').innerHTML, /No products found/);
+  search.value = '637-12-7'; search.listeners.input();
+  assert.match(elements.get('#product-grid').innerHTML, /Aluminium Stearate/);
+});
+
+test('search accepts chemical formulas with normal or subscript digits and CAS prefixes', () => {
+  const { elements } = setupEnvironment();
+  const search = elements.get('#product-search');
+  for (const [query, expected] of [
+    ['Bi2O3', 'Bismuth Oxide'],
+    [' bi₂o₃ ', 'Bismuth Oxide'],
+    ['(NH4)2SO4', 'Ammonium Sulphate'],
+    ['1304-76-3', 'Bismuth Oxide'],
+    ['1304-', 'Bismuth Oxide']
+  ]) {
+    search.value = query;
+    search.listeners.input();
+    assert.ok(elements.get('#product-grid').innerHTML.includes(expected), query);
+  }
+});
+
+
+test('formula search matches partial formulas and formulas followed by descriptive notes', () => {
+  const { elements } = setupEnvironment();
+  const search = elements.get('#product-search');
+  for (const [query, expected] of [
+    ['Cu', 'Copper Sulfate'],
+    ['SO4', 'Copper Sulfate'],
+    ['CuCO3', 'Copper Carbonate'],
+    ['Cu2(OH)2CO3', 'Copper Carbonate'],
+    ['ses2', 'Selenium Sulfide'],
+    ['C8H9NO2', 'Methyl 4-aminobenzoate'],
+    ['cu so₄', 'Copper Sulfate'],
+    ['(NH4)6Mo7O24.4H2O', 'Ammonium Molybdate']
+  ]) {
+    search.value = query;
+    search.listeners.input();
+    assert.ok(elements.get('#product-grid').innerHTML.includes(expected), query);
+  }
 });

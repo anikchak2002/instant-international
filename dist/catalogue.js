@@ -4,14 +4,18 @@
   const labels = {'Food': 'Food & ingredients', 'Pharma': 'Pharma & related chemicals', 'Home and personal care': 'Home & personal care', 'Paint, coating, speciality & others': 'Paint, coating & speciality'};
   const params = new URLSearchParams(location.search);
   let query = params.get('q') || '';
-  let sort = 'asc';
-  let page = 1;
-  const perPage = 12;
   const search = document.querySelector('#product-search');
   const grid = document.querySelector('#product-grid');
   const dialog = document.querySelector('#product-dialog');
   const escape = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
   const hasCas = p => Boolean(p && p.cas && typeof p.cas === 'string' && p.cas.trim() !== '' && !p.cas.toLowerCase().includes('not uniquely') && !p.cas.toLowerCase().includes('not available') && p.cas.toLowerCase() !== 'n/a' && p.cas.toLowerCase() !== 'none');
+  const normalizeFormula = value => String(value || '').normalize('NFKC').toLowerCase().replace(/\s+/g, '').replace(/[·•⋅]/g, '.');
+  // Index formula tokens separately from descriptive notes in the catalogue data.
+  const formulaIndex = new Map(products.map(p => [p.id,
+    String(p.formula || '').normalize('NFKC').split(/[\s;:,]+/)
+      .filter(token => /[A-Z]/.test(token) && /^(?:[A-Z][a-z]?|[0-9()[\]·.•⋅+−-]|n)+$/.test(token))
+      .map(normalizeFormula)
+  ]));
   search.value = query;
 
   function updateURL() {
@@ -22,36 +26,32 @@
   }
 
   function render() {
-    const terms = query.toLocaleLowerCase().trim().split(/\s+/).filter(Boolean);
-    let visible = products.filter(p => terms.every(term => [p.name, p.chemicalName, p.formula, hasCas(p) ? p.cas : ''].join(' ').toLocaleLowerCase().includes(term)));
-    visible.sort((a, b) => a.name.localeCompare(b.name) * (sort === 'asc' ? 1 : -1));
-    const totalPages = Math.max(1, Math.ceil(visible.length / perPage));
-    page = Math.min(page, totalPages);
-    const start = (page - 1) * perPage;
-    document.querySelector('#result-count').textContent = visible.length ? `Showing ${start + 1}–${Math.min(start + perPage, visible.length)} of ${visible.length} products` : 'No matching products';
-    grid.innerHTML = visible.slice(start, start + perPage).map(p => {
-      const casHtml = hasCas(p) ? `<div class="cas-summary"><span class="cas-label">CAS NO.</span><span class="cas-value">${escape(p.cas)}</span></div>` : '';
-      return `<article class="product-card" data-product="${p.id}" tabindex="0" role="article" aria-label="${escape(p.name)}"><span class="product-category">${escape(labels[p.category] || p.category)}</span><h2 class="product-title">${escape(p.name)}</h2><p class="formula">${escape(p.formula || 'Formula varies by composition')}</p><div class="product-card-bottom">${casHtml}<button class="product-detail-button" data-product="${p.id}" aria-label="View details and enquire about ${escape(p.name)}" title="View product and enquire"><span>Enquire</span><span class="btn-arrow" aria-hidden="true">↗</span></button></div></article>`;
+    const prefix = query.toLocaleLowerCase().trim();
+    // NFKC lets visitors type ordinary digits for formulas printed with subscripts.
+    const formulaQuery = normalizeFormula(prefix);
+    const visible = products.filter(p => p.name.toLocaleLowerCase().startsWith(prefix) ||
+      (formulaQuery.length > 1 && formulaIndex.get(p.id).some(formula => formula.includes(formulaQuery))) ||
+      (/^\d/.test(prefix) && hasCas(p) && p.cas.startsWith(prefix)));
+    visible.sort((a, b) => a.name.localeCompare(b.name, 'en', {sensitivity:'base'}));
+    document.querySelector('#result-count').textContent = visible.length ? `${visible.length} products · A–Z` : 'No matching products';
+    let letter = '';
+    grid.innerHTML = visible.map(p => {
+      const initial = p.name.charAt(0).toLocaleUpperCase();
+      const heading = initial !== letter ? `<h2 class="product-letter">${escape(initial)}</h2>` : '';
+      letter = initial;
+      const formula = p.formula ? `<p class="product-meta"><span>Formula</span> ${escape(p.formula)}</p>` : '';
+      const cas = hasCas(p) ? `<p class="product-meta"><span>CAS No.</span> ${escape(p.cas)}</p>` : '';
+      return `${heading}<article class="product-card" data-product="${p.id}" tabindex="0" aria-label="${escape(p.name)}"><div class="product-summary"><h3 class="product-title">${escape(p.name)}</h3>${formula}${cas}</div><button class="product-detail-button" data-product="${p.id}" aria-label="View details and enquire about ${escape(p.name)}"><span>View details</span><span class="btn-arrow" aria-hidden="true">↗</span></button></article>`;
     }).join('');
-    if (!visible.length) grid.innerHTML = `<div class="empty-state"><span aria-hidden="true">⌕</span><h2>No products found.</h2><p>Try another name or CAS number, or browse all products.</p><button class="button button-navy" id="clear-search">Clear search <span aria-hidden="true">↗</span></button></div>`;
-    const pagination = document.querySelector('#pagination');
-    pagination.innerHTML = totalPages > 1 ? `<button data-page="${page - 1}" ${page === 1 ? 'disabled' : ''} aria-label="Previous page">←</button>${Array.from({length:totalPages}, (_, i) => `<button data-page="${i + 1}" class="${page === i + 1 ? 'active' : ''}" ${page === i + 1 ? 'aria-current="page"' : ''} aria-label="Page ${i + 1}">${i + 1}</button>`).join('')}<button data-page="${page + 1}" ${page === totalPages ? 'disabled' : ''} aria-label="Next page">→</button>` : '';
+    if (!visible.length) grid.innerHTML = `<div class="empty-state"><span aria-hidden="true">⌕</span><h2>No products found.</h2><p>Try the beginning of a chemical name, a chemical formula or a CAS number.</p><button class="button button-navy" id="clear-search">Clear search <span aria-hidden="true">↗</span></button></div>`;
     updateURL();
   }
 
-  search.addEventListener('input', () => { query = search.value; page = 1; render(); });
-  document.querySelector('#sort-products').addEventListener('change', event => { sort = event.target.value; page = 1; render(); });
-  document.querySelector('#pagination').addEventListener('click', event => {
-    const button = event.target.closest('[data-page]');
-    if (!button || button.disabled) return;
-    page = Number(button.dataset.page); render();
-    document.querySelector('.results-toolbar').scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth',block:'start'});
-    document.querySelector(`#pagination [data-page="${page}"].active`)?.focus({preventScroll:true});
-  });
+  search.addEventListener('input', () => { query = search.value; render(); });
   grid.addEventListener('click', event => {
     const target = event.target.closest('[data-product]');
     if (target) openProduct(products.find(p => p.id === Number(target.dataset.product)));
-    if (event.target.closest('#clear-search')) { query = ''; page = 1; search.value = ''; render(); search.focus(); }
+    if (event.target.closest('#clear-search')) { query = ''; search.value = ''; render(); search.focus(); }
   });
   grid.addEventListener('keydown', event => {
     if (event.key === 'Enter' || event.key === ' ') {
