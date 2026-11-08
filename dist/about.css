@@ -3,28 +3,28 @@
 .about-page .breadcrumb{margin-bottom:32px}
 .about-page-heading{display:grid;grid-template-columns:1.5fr 1fr;gap:60px;align-items:end}
 .about-page-heading h1{font-size:clamp(40px,4.4vw,62px);font-weight:450;line-height:1.1;letter-spacing:-.055em;margin:0}
-.about-page-heading h1 em{font-family:var(--heading);font-weight:400;color:#315d79}
-.about-page-heading>p{font-size:24px;line-height:1.6;max-width:350px;margin:0 0 8px;color:#526571}
+.about-page-heading h1 em{font-family:var(--heading);font-weight:400;color:#3b516f}
+.about-page-heading>p{font-size:24px;line-height:1.6;max-width:350px;margin:0 0 8px;color:#56606d}
 .about-page .eyebrow{font-size:10px;letter-spacing:.15em}
 .about-laboratory{width:100%;max-width:800px;margin:0 auto;overflow:hidden;border-radius:12px}
 .about-laboratory img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:contain}
-.about-laboratory figcaption,.about-industries figcaption{font-size:14px;line-height:1.7;color:#5e717e;padding:14px 0}
+.about-laboratory figcaption,.about-industries figcaption{font-size:14px;line-height:1.7;color:#636c79;padding:14px 0}
 .about-story,.about-business,.about-purpose,.about-sectors{padding:56px 0}
 .about-editorial{display:grid;grid-template-columns:1fr 1.65fr;gap:80px}
-.about-section-label>span{font-size:10px;letter-spacing:.15em;color:#617682}
+.about-section-label>span{font-size:10px;letter-spacing:.15em;color:#66707d}
 .about-section-label h2{font-size:clamp(28px,3vw,40px);font-weight:450;line-height:1.25;letter-spacing:-.035em;margin:20px 0 0}
-.about-prose p,.about-purpose-grid p{font-size:19px;line-height:1.9;color:#526571;margin:0 0 22px}
+.about-prose p,.about-purpose-grid p{font-size:19px;line-height:1.9;color:#56606d;margin:0 0 22px}
 .about-prose p:last-child,.about-purpose-grid p:last-child{margin-bottom:0}
-.about-prose>p:first-child{color:#234456;font-size:21px}
-.about-business{background:#edf1ef;border-block:1px solid #dce3df}
+.about-prose>p:first-child{color:#2a394f;font-size:21px}
+.about-business{background:#eceff2;border-block:1px solid #dbdfe4}
 .about-purpose-grid{display:grid;grid-template-columns:1fr;gap:44px;margin-top:32px}
-.about-purpose-grid article{border-top:1px solid #c6d3d9;padding-top:28px;min-width:0}
+.about-purpose-grid article{border-top:1px solid #c9ced6;padding-top:28px;min-width:0}
 .about-purpose-grid .eyebrow{display:none}
 .about-purpose-grid h2{font-size:38px;letter-spacing:-.04em;font-weight:450;margin-bottom:24px}
-.about-sectors{border-top:1px solid #dce3df}
+.about-sectors{border-top:1px solid #dbdfe4}
 .about-industries{width:100%;max-width:960px;margin:32px auto 0}
 .about-industries img{display:block;width:100%;height:auto;border-radius:8px}
-.about-page-contact{padding:48px 0;background:#eaf0ef}
+.about-page-contact{padding:48px 0;background:#e9ecf1}
 .about-page-contact>.container{display:flex;align-items:center;justify-content:space-between;gap:32px}
 .about-page-contact h2{font-size:clamp(30px,3.6vw,46px);letter-spacing:-.04em;font-weight:450;margin:0}
 .about-page-contact .button{border-radius:999px;font-size:14px}
@@ -50,18 +50,18 @@
 .about-purpose-grid h2{font-weight:700}
 
 /* Industries: one aligned introduction and illustration. */
-.about-sectors{padding:64px 0;background:#f3f6f8;border-top:1px solid #dce5eb}
+.about-sectors{padding:64px 0;background:#f8f7f3;border-top:1px solid #dfe3e8}
 .about-sectors>.container{max-width:1120px}
 .sectors-heading{display:flex;align-items:center;justify-content:space-between;gap:40px;margin-bottom:32px}
 .sectors-intro{max-width:740px;min-width:0}
-.sectors-kicker{display:block;font-size:11px;font-weight:600;letter-spacing:.14em;color:#617682;margin-bottom:16px}
+.sectors-kicker{display:block;font-size:11px;font-weight:600;letter-spacing:.14em;color:#66707d;margin-bottom:16px}
 .sectors-intro h2{font-size:clamp(30px,3.2vw,44px);font-weight:700;line-height:1.2;letter-spacing:-.035em;margin:0 0 18px}
-.sectors-intro p{font-size:17px;line-height:1.8;color:#526571;margin:0;max-width:700px}
+.sectors-intro p{font-size:17px;line-height:1.8;color:#56606d;margin:0;max-width:700px}
 .sectors-heading>.button{flex-shrink:0;white-space:nowrap;font-size:14px;border-radius:8px}
 .about-sectors .about-industries{max-width:none;margin:0;width:100%}
-.about-sectors .about-industries>a{display:block;border:1px solid #d7e3ed;border-radius:14px;overflow:hidden;background:#eaf3fb}
+.about-sectors .about-industries>a{display:block;border:1px solid #dae1ea;border-radius:14px;overflow:hidden;background:#f6f4ef}
 .about-sectors .about-industries img{border-radius:0}
-.about-sectors .about-industries figcaption{padding:12px 0 0;font-size:12px;color:#617682}
+.about-sectors .about-industries figcaption{padding:12px 0 0;font-size:12px;color:#66707d}
 @media(max-width:900px){
  .sectors-heading{align-items:flex-start;flex-direction:column;gap:22px}
  .sectors-intro{max-width:none}
