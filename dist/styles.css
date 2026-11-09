@@ -257,7 +257,6 @@ h1,h2,h3{font-weight:700}
  .home-page .brand-logo{width:124px}
  .home-page .brand-since{font-size:10px}
  .home-page .hero{background:radial-gradient(320px circle at 85% 8%,rgba(201,155,88,.12),transparent 70%),linear-gradient(168deg,#090f18 0%,#121f31 30%,#213859 70%,#2f5080 100%)}
- .home-page .hero:before{content:"";position:absolute;top:-10px;right:-110px;width:440px;height:420px;background:url('assets/chemical-connections.svg') center/contain no-repeat;opacity:.07;pointer-events:none;z-index:0}
  .home-page .hero-grid{display:block;position:relative;z-index:1;padding-block:52px 48px}
  .home-page .hero-content{width:100%;max-width:440px;margin:0 auto}
  .home-page .hero-signature{display:flex;align-items:center;gap:10px;font-size:10px;letter-spacing:.08em;line-height:1.6;margin:0 0 28px;padding:0;color:#c4cedd;background:none;border:0;border-radius:0}
@@ -285,4 +284,57 @@ h1,h2,h3{font-weight:700}
  .home-page .hero-metrics>div{padding:0;border-radius:0}
  .home-page .hero-metrics strong{font-size:24px}
  .home-page .hero-metrics span{font-size:9px}
+}
+
+/* Larger statistics and readable shared footer. */
+.home-page .hero-metrics{max-width:680px;gap:clamp(20px,4vw,56px)}
+.home-page .hero-metrics strong{font-size:clamp(32px,3.5vw,44px)}
+.home-page .hero-metrics span{font-size:15px;line-height:1.5}
+.footer-nav{font-size:17px}
+.footer-download{font-size:19px}
+.footer-download small,.footer-bottom{font-size:14px}
+.footer-contacts span{font-size:14px}
+.footer-contacts strong{font-size:20px}
+.footer .brand-since{font-size:13px}
+.contact-chemistry{display:block;width:100%;max-width:440px;height:auto;margin-top:32px}
+@media(max-width:600px){
+ .home-page .hero-metrics{gap:12px}
+ .home-page .hero-metrics strong{font-size:32px}
+ .home-page .hero-metrics span{font-size:13px}
+ .footer-bottom{flex-wrap:wrap}
+ .contact-chemistry{max-width:320px;margin:28px auto 0}
+}
+
+/* About laboratory image reused in the home hero. */
+.home-page .hero-laboratory{min-width:0;width:100%;align-self:center}
+.home-page .hero-laboratory img{display:block;width:100%;height:auto;border-radius:20px}
+@media(max-width:900px){
+ .home-page .hero-laboratory{max-width:640px;justify-self:center}
+}
+@media(max-width:600px){
+ .home-page .hero-laboratory{margin:32px auto 0;max-width:440px}
+ .home-page .hero-laboratory img{border-radius:14px}
+}
+
+/* Fill the opening viewport while allowing taller content to scroll naturally. */
+.home-page{--home-header-height:139px;--home-divider-height:18px}
+.home-page .hero{display:flex;flex-direction:column;min-height:calc(100svh - var(--home-header-height) - var(--home-divider-height))}
+.home-page .hero-grid{flex:1}
+.home-page .hero-bottom{flex-shrink:0}
+@media(max-width:760px){
+ .home-page{--home-header-height:105px;--home-divider-height:12px}
+}
+@media(max-width:600px){
+ .home-page{--home-header-height:89px;--home-divider-height:3px}
+}
+
+/* Give the home hero illustration a little more room. */
+@media(min-width:901px){
+ .home-page .hero-grid{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:32px}
+}
+@media(min-width:601px) and (max-width:900px){
+ .home-page .hero-laboratory{max-width:700px}
+}
+@media(max-width:600px){
+ .home-page .hero-laboratory{max-width:480px}
 }
