@@ -1,4 +1,4 @@
-# Instant International
+# instant-international.com
 
 Responsive chemical company website with an animated globe, searchable product catalogue, and email/WhatsApp enquiries.
 
