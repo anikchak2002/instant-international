@@ -338,3 +338,43 @@ h1,h2,h3{font-weight:700}
 @media(max-width:600px){
  .home-page .hero-laboratory{max-width:480px}
 }
+
+/* Office locations and unlinked social icons in the shared footer. */
+.footer-offices-social{display:flex;justify-content:space-between;align-items:center;gap:24px;padding:24px 0;border-top:1px solid var(--line)}
+.footer-locations{min-width:0;color:var(--muted);font-size:16px;line-height:1.7}
+.footer-locations p{margin:0}
+.footer-locations p+p{margin-top:6px}
+.footer-locations strong{color:var(--navy);font-weight:600}
+.footer-social{display:flex;gap:12px;flex-shrink:0;color:var(--navy)}
+.footer-social-icon{display:grid;place-items:center;width:40px;height:40px;border:1px solid var(--line);border-radius:50%}
+.footer-social-icon svg{display:block;width:21px;height:21px}
+@media(max-width:760px){.footer-offices-social{align-items:flex-start;flex-direction:column;gap:18px}}
+
+/* Compact, branded navigation for phones. */
+@media(max-width:760px){
+  #site-header{top:0}
+  .main-header{background:rgba(255,255,255,.97);border-bottom:1px solid #e9e2d5;box-shadow:0 4px 20px #142d4e08}
+  .main-header .nav-wrap{height:88px;width:calc(100% - 32px);gap:16px;padding-block:8px}
+  .main-header .brand-logo{width:128px}
+  .main-header .brand-since{font-size:9px;letter-spacing:.18em;line-height:1.4;color:#8c6b33;margin-top:1px}
+  .menu-toggle{position:relative;width:48px;height:48px;border-radius:15px;border:1px solid #d9c7a8;background:linear-gradient(145deg,#fffdf8,#f5efe3);box-shadow:0 3px 8px #142d4e08;gap:6px;transition:background .2s,border-color .2s}
+  .menu-toggle>span{height:2px;width:20px;border-radius:2px;transition:transform .2s,background .2s}
+  .menu-toggle[aria-expanded=true]{background:var(--navy);border-color:var(--navy)}
+  .menu-toggle[aria-expanded=true]>span{background:#fff}
+  .menu-toggle[aria-expanded=true]>span:first-child{transform:translateY(4px) rotate(45deg)}
+  .menu-toggle[aria-expanded=true]>span:last-child{transform:translateY(-4px) rotate(-45deg)}
+  .main-nav{top:calc(100% + 10px);left:12px;right:12px;padding:12px;gap:5px;border:1px solid #e9e2d5;border-radius:20px;background:#fff;box-shadow:0 18px 48px #0c1c3326;max-height:calc(100vh - 112px);max-height:calc(100dvh - 112px);overscroll-behavior:contain}
+  .main-nav.is-open{animation:mobile-nav-enter .18s ease-out}
+  .main-nav>a{display:flex;align-items:center;min-height:50px;padding:12px 16px;border-radius:12px;font-size:16px;font-weight:550;line-height:1.5;transition:background .2s,color .2s}
+  .main-nav>a:hover{background:#f8f6f0;color:var(--navy)}
+  .main-nav>a[aria-current]{background:#f5efe3;color:var(--navy);font-weight:650}
+  .main-nav>a[aria-current]:after{display:block;position:static;margin-left:auto;width:7px;height:7px;border-radius:50%;background:var(--orange)}
+  .main-nav>a.nav-contact{min-height:52px;margin:7px 0 0;padding:13px 16px;border-radius:12px;background:var(--navy);color:#fff;box-shadow:0 4px 10px #142d4e16}
+  .main-nav>a.nav-contact:hover{background:#243d61}
+  .main-nav>a.nav-contact[aria-current]:after{display:none}
+  html{scroll-padding-top:104px}
+  .results-toolbar{scroll-margin-top:104px}
+  .home-page{--home-header-height:89px}
+}
+@keyframes mobile-nav-enter{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.main-nav.is-open{animation:none}.menu-toggle,.menu-toggle>span{transition:none}}

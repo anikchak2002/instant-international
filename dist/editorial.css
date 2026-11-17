@@ -1,0 +1,47 @@
+/* Editorial accents carry the artwork's blue, teal and gold into the text. */
+:root{--editorial-serif:Georgia,'Times New Roman',serif}
+.heading-accent{font-family:var(--editorial-serif);font-style:italic;font-weight:400;letter-spacing:-.035em;color:#256977}
+.copy-highlight{font-weight:600;color:#243f5a;padding:0 .08em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.highlight-gold{background:linear-gradient(transparent 52%,#f1dfb3 52%)}
+.highlight-teal{background:linear-gradient(transparent 52%,#cfebe2 52%)}
+.highlight-blue{background:linear-gradient(transparent 52%,#d9e9f7 52%)}
+.editorial-kicker{display:block;font-size:10px;font-weight:650;letter-spacing:.17em;line-height:1.6;color:#38727a;margin-bottom:15px}
+.home-page #about{background:linear-gradient(135deg,#fff 10%,#f1f8f8 100%)}
+.home-page #about .about-copy h2{font-size:clamp(30px,3.2vw,44px);line-height:1.23}
+.home-page #about .about-copy h2 .company-name{color:#204c6a}
+.home-page .business{background:radial-gradient(ellipse at 100% 0,#edf5f8,transparent 55%),#fff}
+.home-page .business-heading h2{max-width:720px}
+.home-page .business .connection-highlight{background:linear-gradient(120deg,#f1f7fa,#edf6f3);border-color:#4a9094}
+.home-page .business .connection-highlight em{font-style:normal}
+.home-page .business .purpose-grid,.about-purpose-grid{gap:24px}
+.home-page .business .purpose-grid article,.about-purpose-grid article{padding:32px;border:1px solid #d8e8ea;border-top:3px solid #57949b;border-radius:18px;background:linear-gradient(130deg,#f0f8f8,#fafcfb);box-shadow:none}
+.home-page .business .purpose-grid article+article,.about-purpose-grid article+article{padding:32px;background:linear-gradient(130deg,#fbf5e8,#fffdf7);border-color:#e9dfc9;border-top-color:#b88d49}
+.home-page .business .purpose-grid article+article::before{display:none}
+.home-page .business .purpose-grid article+article .heading-accent,.about-purpose-grid article+article .heading-accent{color:#916829}
+.home-page .business .purpose-grid h3,.about-purpose-grid h2{margin-bottom:20px}
+.home-page .industries{background:linear-gradient(130deg,#f2f7fb,#f5faf7)}
+.home-page .industries h2{color:var(--navy)}
+.home-page .industry-list{border-top:0;display:grid;gap:8px}
+.home-page .industry-list>a{border:1px solid #dde7ed;background:#ffffffb3;padding:18px;gap:16px;border-radius:12px}
+.home-page .industry-list>a[aria-disabled=true]{grid-template-columns:36px minmax(0,1fr)}
+.home-page .industry-no{display:grid;place-items:center;width:34px;height:34px;padding:0;background:#e1edf7;border-radius:10px;color:#285c7b;align-self:center}
+.home-page .industry-list>a:nth-child(3n+2) .industry-no{background:#e0eee5;color:#386b52}
+.home-page .industry-list>a:nth-child(3n) .industry-no{background:#f4e8cd;color:#815c27}
+.home-page .industry-list h3{font-size:clamp(17px,2vw,23px);letter-spacing:-.02em}
+.about-page-hero{background:linear-gradient(125deg,#eef5fa,#faf9f6 65%);border-bottom:1px solid #dfe8ec}
+.about-section-label>span{display:inline-block;color:#296672;font-weight:650;letter-spacing:.12em;padding:6px 10px;background:#e4eff0;border-radius:6px}
+.about-section-label h2{font-weight:650}
+.about-business{background:linear-gradient(120deg,#eef5fa,#edf6f3);border-color:#dbe8eb}
+.catalogue-page .catalogue-hero{background:linear-gradient(120deg,#eef5fa,#f9f6ed);border-bottom:1px solid #e2e8ea}
+.catalogue-heading h1 .heading-accent{color:#256977}
+.contact-page{background:radial-gradient(ellipse at 0 0,#eaf4f6,transparent 65%),#faf9f5}
+.contact-form-card{border-top:3px solid #589398;box-shadow:0 12px 36px #142d4e08}
+@media(max-width:760px){
+ .home-page #about .about-copy{grid-row:1}
+ .home-page #about .home-about-photo{grid-row:2}
+ .home-page #about .about-grid{row-gap:32px}
+ .home-page .business .purpose-grid article,.home-page .business .purpose-grid article+article,.about-purpose-grid article,.about-purpose-grid article+article{padding:24px 20px;border-radius:14px}
+ .home-page .business .purpose-grid p,.about-purpose-grid p{font-size:17px;line-height:1.85}
+ .home-page .industry-list>a{padding:16px 12px;gap:12px}
+ .editorial-kicker{font-size:9px;letter-spacing:.13em}
+}
