@@ -378,3 +378,165 @@ h1,h2,h3{font-weight:700}
 }
 @keyframes mobile-nav-enter{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
 @media(prefers-reduced-motion:reduce){.main-nav.is-open{animation:none}.menu-toggle,.menu-toggle>span{transition:none}}
+
+/* Refined shared navigation and a quieter, rounded contact action. */
+.main-header{border-bottom-color:#e7e9ec;box-shadow:0 4px 24px #142d4e05}
+.main-nav>a.nav-contact{border:1px solid #142d4e;border-radius:999px;padding:10px 12px 10px 22px;gap:20px;min-height:48px;background:#142d4e;color:#fff;box-shadow:none;line-height:1.4;transition:background .2s,border-color .2s}
+.main-nav>a.nav-contact>span{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#ffffff18;color:#e3bd80;font-size:20px}
+.main-nav>a.nav-contact:hover{background:#264665;border-color:#264665}
+.main-nav>a.nav-contact[aria-current]:after{display:none}
+@media(min-width:761px){
+ .main-nav{gap:8px}
+ .main-nav>a:not(.nav-contact){padding:12px 16px;border-radius:999px;transition:background .2s,color .2s}
+ .main-nav>a:not(.nav-contact):hover,.main-nav>a:not(.nav-contact)[aria-current]{background:#f3f5f6;color:var(--navy)}
+ .main-nav>a[aria-current]:after{display:none}
+ .main-nav>a.nav-contact{margin-left:16px}
+}
+@media(min-width:761px) and (max-width:1000px){
+ .main-nav{gap:2px}
+ .main-nav>a:not(.nav-contact){padding:10px}
+ .main-nav>a.nav-contact{margin-left:6px;padding-left:16px;gap:10px}
+}
+@media(max-width:760px){.main-nav>a.nav-contact{justify-content:space-between;margin-top:8px;padding:10px 12px 10px 18px}}
+
+/* Decorative chemical sketches sit behind the hero content. */
+.hero-watermarks{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0;color:#355d82}
+.chemical-mark{position:absolute;opacity:.1}
+.chemical-ring{width:230px;left:-55px;top:8%;transform:rotate(-15deg)}
+.chemical-molecule{width:270px;right:2%;bottom:0;transform:rotate(12deg)}
+.chemical-formula{top:6%;left:49%;font-size:46px;font-weight:500;letter-spacing:.03em;transform:rotate(-12deg)}
+.formula-second{top:auto;left:36%;bottom:5%;font-size:32px;transform:rotate(9deg)}
+.home-page .hero-grid,.home-page .hero-bottom{position:relative;z-index:1}
+@media(max-width:600px){
+ .hero-watermarks{color:#c4d9ed}
+ .chemical-mark{opacity:.09}
+ .chemical-ring{width:190px;left:auto;right:-55px;top:15px}
+ .chemical-molecule{width:200px;right:auto;left:-40px;bottom:22%}
+ .chemical-formula{left:15%;top:3%;font-size:30px}
+ .formula-second{top:auto;left:auto;right:5%;bottom:3%}
+}
+
+/* Four strengths connected by the chemistry at the heart of the business. */
+.why-choose{position:relative;overflow:hidden;background:radial-gradient(ellipse at 50% 65%,#e3efec,transparent 58%),#f8faf8;border-block:1px solid #e0e9e5}
+.why-choose-heading{text-align:center;max-width:690px;margin:0 auto 60px}
+.why-choose-heading h2{font-size:clamp(36px,4vw,54px)}
+.why-choose-heading>p{max-width:510px;margin:22px auto 0;color:var(--muted);font-size:18px;line-height:1.8}
+.why-constellation{position:relative}
+.why-choose-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 230px}
+.why-choose-grid article{position:relative;padding:30px;background:#ffffffd9;border:1px solid #dbe6e1;border-radius:8px 28px 8px 28px;box-shadow:0 8px 32px #142d4e05;transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease}
+.why-choose-grid article:after{content:'';position:absolute;top:50%;width:115px;height:1px;background:linear-gradient(90deg,#8fb8ac,#8fb8ac22);pointer-events:none}
+.why-choose-grid article:nth-child(odd):after{left:100%}
+.why-choose-grid article:nth-child(even):after{right:100%;transform:rotate(180deg)}
+.why-icon{display:grid;place-items:center;width:48px;height:48px;margin-bottom:22px;border-radius:50%;background:#eaf4ef;color:#34776e}
+.why-icon svg{width:25px;height:25px}
+.why-choose-grid article:nth-child(2) .why-icon{background:#edf3f9;color:#355d82}
+.why-choose-grid article:nth-child(3) .why-icon{background:#faf1df;color:#947038}
+.why-choose-grid article:nth-child(4) .why-icon{background:#eff3f6;color:#4b6479}
+.why-choose-grid h3{font-size:22px;line-height:1.35;letter-spacing:-.025em;margin:0 0 14px;color:var(--navy)}
+.why-choose-grid p{font-size:16px;line-height:1.85;color:var(--muted);margin:0}
+.why-nucleus{position:absolute;left:50%;top:50%;width:210px;height:260px;transform:translate(-50%,-50%);display:grid;place-items:center;pointer-events:none}
+.why-core{position:relative;z-index:1;display:grid;justify-items:center;align-content:center;gap:12px;width:138px;height:138px;border-radius:50%;color:#315f60;background:radial-gradient(circle at 30% 20%,#fff,#edf5ef);border:1px solid #b7d0c5;box-shadow:0 0 0 10px #fff7,0 16px 40px #1b4d4020}
+.why-core svg{width:44px;height:44px}
+.why-core span{text-align:center;font-size:9px;line-height:1.6;font-weight:650;letter-spacing:.16em}
+.why-orbit{position:absolute;inset:20px 10px;border:1px solid #75a49655;border-radius:50%;animation:chemistry-orbit 24s linear infinite;animation-play-state:paused}
+.orbit-two{inset:40px -5px;animation-duration:32s;animation-direction:reverse;border-color:#bd985755}
+.orbit-three{inset:0 25px;animation-duration:40s;border-style:dashed;border-color:#839cb044}
+.why-orbit i{position:absolute;top:15%;left:12%;width:9px;height:9px;border-radius:50%;background:#619589;box-shadow:0 0 0 5px #61958912}
+.orbit-two i{background:#bc985e;width:7px;height:7px}
+.orbit-three i{background:#6b8aa0;width:6px;height:6px}
+.why-choose.is-visible .why-orbit{animation-play-state:running}
+.why-choose.has-entered .why-choose-grid article{animation:chemistry-reveal .8s both cubic-bezier(.2,.7,.2,1)}
+.why-choose.has-entered .why-choose-grid article:nth-child(2){animation-delay:.12s}
+.why-choose.has-entered .why-choose-grid article:nth-child(3){animation-delay:.24s}
+.why-choose.has-entered .why-choose-grid article:nth-child(4){animation-delay:.36s}
+@keyframes chemistry-orbit{to{transform:rotate(360deg)}}
+@keyframes chemistry-reveal{from{opacity:0;translate:0 22px}to{opacity:1;translate:0 0}}
+@media(hover:hover){.why-choose-grid article:hover{transform:translateY(-5px);border-color:#97baad;box-shadow:0 18px 38px #142d4e0c}}
+@media(max-width:1100px){
+ .why-choose-grid{column-gap:170px}
+ .why-choose-grid article{padding:24px}
+ .why-choose-grid article:after{width:85px}
+ .why-nucleus{scale:.75}
+}
+@media(max-width:900px){
+ .why-choose-heading{margin-bottom:24px}
+ .why-nucleus{position:relative;top:auto;left:auto;transform:none;scale:1;margin:0 auto 32px;height:220px;width:200px}
+ .why-choose-grid{gap:20px}
+ .why-choose-grid article:after{display:none}
+}
+@media(max-width:600px){
+ .why-choose-heading>p{font-size:17px}
+ .why-choose-grid{grid-template-columns:1fr;gap:16px}
+ .why-choose-grid article{padding:26px}
+ .why-choose-grid h3{font-size:22px}
+}
+@media(prefers-reduced-motion:reduce){
+ .why-choose .why-orbit,.why-choose.has-entered .why-choose-grid article{animation:none}
+ .why-choose-grid article{transition:none}
+}
+
+/* Additional molecular linework around the open edges of the hero. */
+.chemical-fused{width:230px;left:19%;top:-22px;transform:rotate(12deg)}
+.chemical-chain{width:250px;right:5%;top:4%;transform:rotate(-18deg)}
+.chemical-hexagon{width:155px;left:47%;top:36%;transform:rotate(18deg);opacity:.075}
+.chemical-bonds{width:220px;left:5%;bottom:1%;transform:rotate(-10deg)}
+@media(max-width:900px){
+ .chemical-fused{left:20%;width:190px}
+ .chemical-chain{right:-50px;top:36%;width:210px}
+ .chemical-hexagon{left:auto;right:0;top:57%;width:130px}
+ .chemical-bonds{left:0;width:180px}
+}
+@media(max-width:600px){
+ .chemical-fused{left:-35px;top:9%;width:150px;opacity:.07}
+ .chemical-chain{right:-55px;top:37%;width:190px;opacity:.08}
+ .chemical-hexagon{right:-25px;top:58%;width:120px;opacity:.07}
+ .chemical-bonds{left:4%;bottom:2%;width:165px;opacity:.08}
+}
+
+/* Match the About page typography within Why Choose Us. */
+.home-page .why-choose{font-family:'Manrope','Inter',Arial,sans-serif}
+.home-page .why-choose-heading h2,
+.home-page .why-choose-grid h3{font-family:'Libre Caslon Display',Georgia,serif;font-weight:400;font-synthesis:none;letter-spacing:-.025em}
+.home-page .why-choose-heading h2{font-size:clamp(40px,4.5vw,60px);line-height:1.12}
+.home-page .why-choose-heading .heading-accent{font-family:inherit;font-style:normal;font-weight:400}
+.home-page .why-choose-grid h3{font-size:30px;line-height:1.16}
+.home-page .why-choose-heading>p{font-size:18px;line-height:1.8}
+.home-page .why-choose-grid p{font-size:16px;line-height:1.85}
+@media(max-width:600px){
+ .home-page .why-choose-heading h2{font-size:40px}
+ .home-page .why-choose-grid h3{font-size:28px}
+ .home-page .why-choose-heading>p{font-size:17px}
+}
+
+/* Clear, restrained typography for long industry names. */
+.home-page .industries h2,
+.home-page .industries h2 .heading-accent,
+.home-page .industry-list h3{font-family:'Manrope','Inter',Arial,sans-serif;font-style:normal;font-synthesis:none}
+.home-page .industries h2{font-size:clamp(32px,3.2vw,44px);font-weight:600;letter-spacing:-.04em;line-height:1.2}
+.home-page .industries h2 .heading-accent{font-weight:500;letter-spacing:inherit}
+.home-page .industry-list h3{font-size:20px;font-weight:500;line-height:1.5;letter-spacing:-.015em;margin:0}
+.home-page .industries .section-heading{align-items:center;gap:40px;margin-bottom:36px}
+.home-page .industries-intro{font-size:16px;line-height:1.8;max-width:420px}
+@media(max-width:760px){
+ .home-page .industries h2{font-size:32px}
+ .home-page .industry-list h3{font-size:18px}
+ .home-page .industries .section-heading{margin-bottom:28px}
+}
+
+/* A modest readability increase for the homepage strengths and industries. */
+.home-page .why-choose-heading h2{font-size:clamp(42px,4.7vw,64px)}
+.home-page .why-choose-grid h3{font-size:32px}
+.home-page .why-choose-heading>p{font-size:19px}
+.home-page .why-choose-grid p{font-size:17px}
+.home-page .industries h2{font-size:clamp(34px,3.4vw,48px)}
+.home-page .industry-list h3{font-size:22px}
+.home-page .industries-intro{font-size:17px}
+@media(max-width:760px){
+ .home-page .industries h2{font-size:34px}
+ .home-page .industry-list h3{font-size:19px}
+}
+@media(max-width:600px){
+ .home-page .why-choose-heading h2{font-size:42px}
+ .home-page .why-choose-grid h3{font-size:30px}
+ .home-page .why-choose-heading>p{font-size:18px}
+}

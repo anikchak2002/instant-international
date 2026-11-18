@@ -21,13 +21,11 @@
 .home-page .business .purpose-grid h3,.about-purpose-grid h2{margin-bottom:20px}
 .home-page .industries{background:linear-gradient(130deg,#f2f7fb,#f5faf7)}
 .home-page .industries h2{color:var(--navy)}
-.home-page .industry-list{border-top:0;display:grid;gap:8px}
-.home-page .industry-list>a{border:1px solid #dde7ed;background:#ffffffb3;padding:18px;gap:16px;border-radius:12px}
+.home-page .industry-list{border-top:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.home-page .industry-list>a{border:1px solid #e0e7e7;background:#ffffffb3;padding:20px;gap:14px;border-radius:8px;min-height:88px}
 .home-page .industry-list>a[aria-disabled=true]{grid-template-columns:36px minmax(0,1fr)}
-.home-page .industry-no{display:grid;place-items:center;width:34px;height:34px;padding:0;background:#e1edf7;border-radius:10px;color:#285c7b;align-self:center}
-.home-page .industry-list>a:nth-child(3n+2) .industry-no{background:#e0eee5;color:#386b52}
-.home-page .industry-list>a:nth-child(3n) .industry-no{background:#f4e8cd;color:#815c27}
-.home-page .industry-list h3{font-size:clamp(17px,2vw,23px);letter-spacing:-.02em}
+.home-page .industry-no{display:grid;place-items:center;width:30px;height:30px;padding:0;background:#edf2f2;border-radius:50%;color:#58716d;align-self:center;font-size:11px;font-weight:600}
+.home-page .industry-list h3{letter-spacing:-.015em}
 .about-page-hero{background:linear-gradient(125deg,#eef5fa,#faf9f6 65%);border-bottom:1px solid #dfe8ec}
 .about-section-label>span{display:inline-block;color:#296672;font-weight:650;letter-spacing:.12em;padding:6px 10px;background:#e4eff0;border-radius:6px}
 .about-section-label h2{font-weight:650}
@@ -45,3 +43,7 @@
  .home-page .industry-list>a{padding:16px 12px;gap:12px}
  .editorial-kicker{font-size:9px;letter-spacing:.13em}
 }
+
+/* Section headings stand on their own without numbered labels. */
+.about-section-label h2{margin-top:0}
+@media(max-width:760px){.home-page .industry-list{grid-template-columns:1fr}}
