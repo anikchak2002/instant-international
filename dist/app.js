@@ -45,3 +45,15 @@ if (isAbout && 'IntersectionObserver' in window) {
   }, { threshold: 0.08 });
   document.querySelectorAll('.about-story .about-editorial, .about-business .about-editorial, .about-purpose-grid article').forEach(section => aboutRevealObserver.observe(section));
 }
+
+// Reveal homepage company sections once, without hiding content by default.
+if (document.body.classList.contains('home-page') && 'IntersectionObserver' in window) {
+  const companyObserver = new IntersectionObserver(entries => {
+    for (const entry of entries) {
+      if (!entry.isIntersecting) continue;
+      entry.target.classList.add('company-revealed');
+      companyObserver.unobserve(entry.target);
+    }
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.home-page #about, .home-page .business').forEach(section => companyObserver.observe(section));
+}

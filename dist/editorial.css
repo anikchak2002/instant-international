@@ -7,7 +7,6 @@
 .highlight-blue{background:linear-gradient(transparent 52%,#d9e9f7 52%)}
 .editorial-kicker{display:block;font-size:10px;font-weight:650;letter-spacing:.17em;line-height:1.6;color:#38727a;margin-bottom:15px}
 .home-page #about{background:linear-gradient(135deg,#fff 10%,#f1f8f8 100%)}
-.home-page #about .about-copy h2{font-size:clamp(30px,3.2vw,44px);line-height:1.23}
 .home-page #about .about-copy h2 .company-name{color:#204c6a}
 .home-page .business{background:radial-gradient(ellipse at 100% 0,#edf5f8,transparent 55%),#fff}
 .home-page .business-heading h2{max-width:720px}

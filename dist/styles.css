@@ -540,3 +540,39 @@ h1,h2,h3{font-weight:700}
  .home-page .why-choose-grid h3{font-size:30px}
  .home-page .why-choose-heading>p{font-size:18px}
 }
+
+/* Carry the editorial type pairing into the company introduction. */
+.home-page #about .about-copy,
+.home-page .business .business-copy{font-family:'Manrope','Inter',Arial,sans-serif}
+.home-page #about .about-copy h2,
+.home-page .business-heading h2{font-family:'Libre Caslon Display',Georgia,serif;font-size:clamp(36px,3.6vw,50px);font-weight:400;font-synthesis:none;letter-spacing:-.025em;line-height:1.15;margin-bottom:26px}
+.home-page #about .about-copy h2 .company-name{font-family:inherit;font-weight:400}
+.home-page .business-heading h2 .heading-accent{font-family:inherit;font-style:normal;font-weight:400;letter-spacing:inherit}
+.home-page #about .about-copy>p{font-size:18px;line-height:1.85}
+.home-page .business .business-copy p{font-size:19px;line-height:1.85}
+.home-page #about .about-copy p .company-name,
+.home-page .business .business-copy .company-name{font-weight:700}
+@media(max-width:760px){
+ .home-page #about .about-copy h2,.home-page .business-heading h2{font-size:36px}
+ .home-page #about .about-copy>p,.home-page .business .business-copy p{font-size:17px;line-height:1.85}
+}
+
+/* Company sections: a little more presence, with quiet scroll entrances. */
+.home-page #about .about-copy h2,
+.home-page .business-heading h2{font-size:clamp(38px,3.8vw,54px)}
+.home-page #about .about-copy>p{font-size:19px}
+.home-page .business .business-copy p{font-size:20px}
+@media(max-width:760px){
+ .home-page #about .about-copy h2,.home-page .business-heading h2{font-size:38px}
+ .home-page #about .about-copy>p,.home-page .business .business-copy p{font-size:18px}
+}
+@media(prefers-reduced-motion:no-preference){
+ .home-page .company-revealed .home-about-photo,
+ .home-page .company-revealed .business-heading{animation:company-rise .8s cubic-bezier(.2,.7,.2,1) both}
+ .home-page .company-revealed .about-copy,
+ .home-page .company-revealed .business-copy{animation:company-rise .85s .12s cubic-bezier(.2,.7,.2,1) both}
+ .home-page .company-revealed .copy-highlight{background-repeat:no-repeat;animation:company-highlight .9s .45s ease-out both}
+}
+@keyframes company-rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes company-highlight{from{background-size:0% 100%}to{background-size:100% 100%}}
+@media print{.home-page .company-revealed *{animation:none!important}}
